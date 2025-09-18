@@ -15,7 +15,7 @@ policy:
   _target_: diffusion_policy.policy.diffusion_unet_timm_policy.DiffusionUnetTimmPolicy
 
   shape_meta: ${shape_meta}
-  
+
   noise_scheduler:
     _target_: diffusers.DDIMScheduler
     num_train_timesteps: 50
@@ -44,18 +44,17 @@ policy:
 
     ##### from scratch #####
     # model_name: 'resnet34.a1_in1k'
-    model_name: 'vit_base_patch16_clip_224.openai'
+    model_name: "vit_base_patch16_clip_224.openai"
     # model_name: 'convnext_base.clip_laion2b_augreg_ft_in12k'
     pretrained: True
     frozen: False
 
-    
-    global_pool: ''
+    global_pool: ""
 
     # 'avg' or 'max' or 'soft_attention' or 'spatial_embedding' or 'transformer' or 'attention_pool_2d'
-    feature_aggregation: 'attention_pool_2d'
+    feature_aggregation: "attention_pool_2d"
     # feature_aggregation: null
-    position_encording: 'sinusoidal' # 'learnable' or 'sinusoidal'. it only works for transformer
+    position_encording: "sinusoidal" # 'learnable' or 'sinusoidal'. it only works for transformer
 
     # it only works for resnet. 32 (7x7) or 16 (14x14)
     downsample_ratio: 32
@@ -88,7 +87,6 @@ policy:
       #   sigma: 5.0
       # - _target_: torchvision.transforms.RandomCrop
       #   size: 192
-      
 
     use_group_norm: True
     share_rgb_model: False
@@ -97,7 +95,7 @@ policy:
   num_inference_steps: 16
   obs_as_global_cond: True
   diffusion_step_embed_dim: 128
-  down_dims: [256,512,1024]
+  down_dims: [256, 512, 1024]
   kernel_size: 5
   n_groups: 8
   cond_predict_scale: True
@@ -115,14 +113,14 @@ ema:
   max_value: 0.9999
 
 dataloader:
-  batch_size: 64
+  batch_size: 16
   num_workers: 8
   shuffle: True
   pin_memory: True
   persistent_workers: True
 
 val_dataloader:
-  batch_size: 64
+  batch_size: 16
   num_workers: 8
   shuffle: False
   pin_memory: True
@@ -189,7 +187,7 @@ checkpoint:
     monitor_key: train_loss
     mode: min
     k: 20
-    format_str: 'epoch={epoch:04d}-train_loss={train_loss:.3f}.ckpt'
+    format_str: "epoch={epoch:04d}-train_loss={train_loss:.3f}.ckpt"
   save_last_ckpt: True
   save_last_snapshot: False
 

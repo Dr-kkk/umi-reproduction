@@ -6,9 +6,11 @@ channels:
 dependencies:
   - python=3.9
   - pip=22.1
-  - pytorch=2.1.0
-  - pytorch-cuda=12.1
-  - torchvision=0.16.0
+  - pytorch=2.3.1 # 精确指定版本
+  - pytorch-cuda=12.1 # 精确指定 CUDA 版本
+  - torchvision=0.18.1 # 匹配 PyTorch 2.3.1 的 torchvision
+  - torchaudio # 建议加上 torchaudio
+  - pytorch-mutex=*=*_cuda # 关键！解决潜在的包冲突
   - numpy=1.24
   - scipy=1.11
   - numba=0.57
@@ -41,19 +43,19 @@ dependencies:
   - aiohttp=3.9
   - aiofiles=23.2
   - pip:
-    - ray[default]==2.8.0
-    - threadpoolctl==3.2
-    - v4l2py==2.2
-    - ur-rtde==1.5.6
-    # requires apt install libspnav-dev spacenavd; systemctl start spacenavd
-    - spnav @ https://github.com/cheng-chi/spnav/archive/c1c938ebe3cc542db4685e0d13850ff1abfdb943.tar.gz
-    - atomics==1.0.2
-    - pynput==1.7.6
-    - fastcrc==0.2
-    - imagecodecs==2023.9.18
-    - robomimic==0.2.0
-    # requires mujoco py dependencies libosmesa6-dev libgl1-mesa-glx libglfw3 patchelf
-    - free-mujoco-py==2.1.6
-    - robosuite @ https://github.com/cheng-chi/robosuite/archive/3f2c3116f1c0a1916e94bfa28da4d055927d1ab3.tar.gz
-    # implicitly depend on conda package exiftool
-    - PyExifTool==0.5
+      - ray[default]==2.8.0
+      - threadpoolctl==3.2
+      - v4l2py==2.2
+      - ur-rtde==1.5.6
+      # requires apt install libspnav-dev spacenavd; systemctl start spacenavd
+      - spnav @ https://github.com/cheng-chi/spnav/archive/c1c938ebe3cc542db4685e0d13850ff1abfdb943.tar.gz
+      - atomics==1.0.2
+      - pynput==1.7.6
+      - fastcrc==0.2
+      - imagecodecs==2023.9.18
+      - robomimic==0.2.0
+      # requires mujoco py dependencies libosmesa6-dev libgl1-mesa-glx libglfw3 patchelf
+      - free-mujoco-py==2.1.6
+      - robosuite @ https://github.com/cheng-chi/robosuite/archive/3f2c3116f1c0a1916e94bfa28da4d055927d1ab3.tar.gz
+      # implicitly depend on conda package exiftool
+      - PyExifTool==0.5

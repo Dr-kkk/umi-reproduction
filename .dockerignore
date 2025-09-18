@@ -1,0 +1,8 @@
+# Git
+.git
+
+# Python cache
+__pycache__/
+
+# ADD YOUR LARGE DATA/MODEL FOLDERS HERE
+data/
